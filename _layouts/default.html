@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang }}">
+
+  {% include head.html %}
+
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="{{ site.baseurl }}">
+          <h2 class="nav-title">{{ site.title }}</h2>
+        </a>
+        <ul>
+          <li><a href="{{ site.baseurl }}/{{ page.lang }}/">{{ site.data.translations['posts'][page.lang] }} {{ site.data.languages[page.lang].icon }} </a></li>
+          {% if page.lang == "tr" %}<li><a href="{{ site.baseurl }}/{{ page.lang }}/hakkimda">Hakkımda</a></li>{% endif %}
+          {% if page.lang == "en" %}<li><a href="{{ site.baseurl }}/{{ page.lang }}/about">About</a></li>{% endif %}
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      {{ content }}
+    </main>
+
+    <footer>
+      <span>
+        &copy; <time datetime="{{ site.time }}">{{ site.time | date: '%Y' }}</time> {{ site.author.name }} {{ site.data.translations['footer'][page.lang] }} 
+    </footer>
+  </body>
+</html>

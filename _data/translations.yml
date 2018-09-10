@@ -1,0 +1,24 @@
+selectLang:
+  en: "Select Your Language"
+  tr: "Dil seçin"
+posts:
+  en: "Posts"
+  tr: "Yazılar"
+relatedPosts:
+  en: "Related Posts"
+  tr: "Benzer Yazılar"
+differentLanguage:
+  en: "Read this page in a different language"
+  tr: "Bu sayfayı başka bir dilde okuyun"
+viewIn:
+  en: "View in"
+  tr: "Görüntüle"
+writtenBy:
+  en: "Written By"
+  tr: "Yazar: "
+top:
+  en: "Top"
+  tr: "Sayfanın Başına Dön"
+footer:
+  en: "Made with Jekyll."
+  tr: "Jekyll ile oluşturuldu."

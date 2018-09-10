@@ -1,0 +1,75 @@
+---
+layout: default
+---
+
+<div class="post">
+  <div class="post-info">
+    <span>{{ site.data.translations['writtenBy'][page.lang] }}</span>
+    {% if page.author %}
+        {{ page.author }}
+    {% else %}
+        {{ site.author.name }}
+    {% endif %}
+
+    {% if page.date %}
+      <br>
+      <time datetime="{{ page.date }}">{{ page.date | date: "%d.%m.%Y" }}</time>
+    {% endif %}
+  </div>
+
+  <h1 class="post-title">{{ page.title }}</h1>
+  <div class="post-line"></div>
+
+  {{ content }}
+
+</div>
+{% if page.layout != 'index' %}
+    {% assign posts=site.posts | where:"lang-ref", page.lang-ref | sort: 'lang' %}
+    {% if posts.size == 0 %}
+        {% assign posts=site.pages | where:"lang-ref", page.lang-ref | sort: 'lang' %}
+    {% endif %}
+    {% if posts.size > 1 %}
+    <footer class="lang-options">
+        <em>{{ site.data.translations['differentLanguage'][page.lang] }}:</em>
+        <ul>
+        {% for post in posts %}
+        <a title="{{ site.data.translations['viewIn'][page.lang] }} {{ site.data.languages[post.lang].label }}" class="{{post.lang}}" href="{{ site.base-url }}/tale{{ post.url }}">{{ site.data.languages[post.lang].icon }} {{ site.data.languages[post.lang].label }}</a>
+        {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+{% endif %}
+<div class="pagination">
+  
+  
+  
+{% for post in site.posts reversed %}
+  {% if post.lang == page.lang %}
+    {% if next %}
+      <a href="/tale{{ post.url }}" class="left arrow">&#8592;</a>
+   {% break %}
+    {% endif %}
+    {% assign next = false %}
+    {% if post.id == page.id %}
+      {% assign next = true %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+  
+
+  {% for post in site.posts %}
+  {% if post.lang == page.lang %}
+    {% if prev %}
+      <a href="/tale{{ post.url }}" class="right arrow">&#8594;</a>
+    {% endif %}
+    {% assign prev = false %}
+    {% if post.id == page.id %}
+      {% assign prev = true %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+  <a href="#" class="top">{{ site.data.translations['top'][page.lang] }}</a>
+</div>
+
+
